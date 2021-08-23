@@ -12,7 +12,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'echo "this is test stage."'
+        sh 'git --version'
       }
     }
 
