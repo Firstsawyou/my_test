@@ -1,20 +1,16 @@
 pipeline {
-    agent {
-        docker { image 'node:7-alpine' }
+    agent any
+
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
     }
+
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
-            }
-        }
-	stage('Test') {
-            steps {
-                sh 'echo "successful!"; exit 0'
+                sh 'printenv'
+		echo '$env.DISABLE_AUTH'
             }
         }
     }
